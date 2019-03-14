@@ -1,0 +1,17 @@
+<form class="form-inline">
+  <fieldset>
+    <legend>Password sharing</legend>
+    <%= token_tag nil %>
+    <% if params[:generate] == 'on' %>
+      <input id="password" name="password" type="text" readonly="readonly" onclick="this.select();" value="<%= @password %>" />
+      <span class="help-block">Your password</span>
+    <% end %>
+    <% if !params[:email_checkbox] %>
+        <input id="link" name="link" type="text" readonly="readonly" onclick="this.select();" value="<%= "#{request.protocol}#{request.host_with_port}/?k=#{@key}" %>" />
+        <span class="help-block">Your link</span>
+    <% else %>
+        <p>Email was successfully sended.
+    <% end %>
+  </fieldset>
+
+</form>
